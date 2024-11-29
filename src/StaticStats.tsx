@@ -233,6 +233,8 @@ function StaticStats() {
               },
             })
         });
+      }, () => {}, {
+        enableHighAccuracy: false,
       });
     })
 

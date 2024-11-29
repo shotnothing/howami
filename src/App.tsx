@@ -179,7 +179,6 @@ function App() {
         "wakeLock": navigator.wakeLock,
         "webdriver": navigator.webdriver,
         "windowControlsOverlay": navigator.windowControlsOverlay,
-        "xr": navigator.xr,
       }
     }
 

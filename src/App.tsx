@@ -226,6 +226,8 @@ function App() {
     }))
   }).flat();
 
+  console.log(data);
+
   return (
     <>
       <DataTable columns={columns} data={data} />

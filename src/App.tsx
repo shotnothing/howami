@@ -71,7 +71,7 @@ function App() {
                       let result = "No Result";
                       switch (key) {
                         case "vibrate":
-                          result = value(100);
+                          result = value(500);
                           break;
                         case "share":
                         case "canShare":

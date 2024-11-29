@@ -99,7 +99,11 @@ function App() {
                           break;
                       }
                       console.log(result);
-                      toast(`${key} returned ${result}`);
+                      if (key === "vibrate") {
+                        toast(`Attempted to vibrate for 500ms`);
+                      } else {
+                        toast(`${key} returned ${result}`);
+                      }
                     }}
                   >Invoke</Button>
                   {key === "getBattery" && battery && (

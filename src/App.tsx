@@ -149,7 +149,7 @@ function App() {
         "contacts": navigator.contacts,
         "cookieEnabled": navigator.cookieEnabled,
         "credentials": navigator.credentials,
-        "deviceMemory": navigator.deviceMemory,
+        "deviceMemory (bins of 1,2,4,8, rounded down)": navigator.deviceMemory,
         "geolocation": navigator.geolocation,
         "gpu": navigator.gpu,
         "hardwareConcurrency": navigator.hardwareConcurrency,

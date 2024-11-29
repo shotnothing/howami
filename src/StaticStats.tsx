@@ -200,30 +200,37 @@ function StaticStats() {
     }
 
     getDetectGPUStats().then((detectGPUStats) => {
-      setStats({
-        "navigator": getNavigatorStats(),
-        "webgl": {
-          ...getWebGLStats(),
-        },
-        "detect-gpu": detectGPUStats,
-        "others": {
-          // time zone
-          "timeZone": Intl.DateTimeFormat().resolvedOptions().timeZone,
-          // screen size
-          "screen": {
-            "width": screen.width,
-            "height": screen.height,
+      navigator.geolocation.getCurrentPosition((position) => {
+        setStats({
+          "navigator": getNavigatorStats(),
+          "webgl": {
+            ...getWebGLStats(),
           },
-          // color depth
-          "colorDepth": screen.colorDepth,
-          // system fonts
-          "systemFonts": listFontFamilies(),
-          // are cookies enabled
-          "cookiesEnabled": navigator.cookieEnabled,
-          // browser plugin details
-          "plugins": Array.from(navigator.plugins).map((plugin) => (plugin.name)),
-        },
-      })
+          "detect-gpu": detectGPUStats,
+          "others": {
+            // time zone
+            "timeZone": Intl.DateTimeFormat().resolvedOptions().timeZone,
+            // screen size
+            "screen": {
+              "width": screen.width,
+              "height": screen.height,
+            },
+            // color depth
+            "colorDepth": screen.colorDepth,
+            // system fonts
+            "systemFonts": listFontFamilies(),
+            // are cookies enabled
+            "cookiesEnabled": navigator.cookieEnabled,
+            // browser plugin details
+            "plugins": Array.from(navigator.plugins).map((plugin) => (plugin.name)),
+            // gps coordinates
+            "gps": {
+              "longitude": position.coords.longitude,
+              "latitude": position.coords.latitude,
+            },
+          },
+        })
+      });
     })
 
   }, [])

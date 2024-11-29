@@ -192,7 +192,12 @@ function StaticStats() {
       }
     }
 
-    
+    function listFontFamilies() {
+      const fontFaces = [...document.fonts.values()];
+      const families = fontFaces.map(font => font.family);
+
+      return families;
+    }
 
     getDetectGPUStats().then((detectGPUStats) => {
       setStats({
@@ -201,6 +206,23 @@ function StaticStats() {
           ...getWebGLStats(),
         },
         "detect-gpu": detectGPUStats,
+        "others": {
+          // time zone
+          "timeZone": Intl.DateTimeFormat().resolvedOptions().timeZone,
+          // screen size
+          "screen": {
+            "width": screen.width,
+            "height": screen.height,
+          },
+          // color depth
+          "colorDepth": screen.colorDepth,
+          // system fonts
+          "systemFonts": listFontFamilies(),
+          // are cookies enabled
+          "cookiesEnabled": navigator.cookieEnabled,
+          // browser plugin details
+          "plugins": Array.from(navigator.plugins).map((plugin) => (plugin.name)),
+        },
       })
     })
 
